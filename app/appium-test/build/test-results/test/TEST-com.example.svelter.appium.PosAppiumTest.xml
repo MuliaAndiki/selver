@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.svelter.appium.PosAppiumTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-06-13T05:29:35.170Z" hostname="muliaandiki-LOQ-15IRH8" time="146.662">
+  <properties/>
+  <testcase name="TC06 - Checkbox takeaway bisa dicentang dan dilepas" classname="com.example.svelter.appium.PosAppiumTest" time="3.717"/>
+  <testcase name="TC01 - Layar utama menampilkan teks struk default" classname="com.example.svelter.appium.PosAppiumTest" time="1.992"/>
+  <testcase name="TC08 - Validasi error saat nama pesanan kosong" classname="com.example.svelter.appium.PosAppiumTest" time="15.26"/>
+  <testcase name="TC14 - Format struk lengkap setelah transaksi berhasil" classname="com.example.svelter.appium.PosAppiumTest" time="14.059"/>
+  <testcase name="TC05 - Hitung total dengan takeaway (+ Rp 3.000)" classname="com.example.svelter.appium.PosAppiumTest" time="13.937"/>
+  <testcase name="TC09 - Validasi error saat harga kosong" classname="com.example.svelter.appium.PosAppiumTest" time="16.237"/>
+  <testcase name="TC04 - Hitung total tanpa takeaway" classname="com.example.svelter.appium.PosAppiumTest" time="13.7"/>
+  <testcase name="TC07 - Validasi error saat semua field kosong" classname="com.example.svelter.appium.PosAppiumTest" time="4.121"/>
+  <testcase name="TC11 - Validasi error saat harga bukan angka" classname="com.example.svelter.appium.PosAppiumTest" time="13.907"/>
+  <testcase name="TC12 - Validasi error saat jumlah bukan angka" classname="com.example.svelter.appium.PosAppiumTest" time="15.616"/>
+  <testcase name="TC03 - Semua field form dan tombol hitung tampil" classname="com.example.svelter.appium.PosAppiumTest" time="1.703"/>
+  <testcase name="TC10 - Validasi error saat jumlah kosong" classname="com.example.svelter.appium.PosAppiumTest" time="10.714"/>
+  <testcase name="TC02 - Toolbar header tampil dengan judul aplikasi" classname="com.example.svelter.appium.PosAppiumTest" time="1.945"/>
+  <testcase name="TC13 - Perhitungan pesanan dengan harga dan jumlah berbeda" classname="com.example.svelter.appium.PosAppiumTest" time="13.824"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -24,3 +24,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "svelter"
 include(":app")
+include(":app:appium-test")
