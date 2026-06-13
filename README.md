@@ -254,39 +254,6 @@ app/appium-test/build/reports/tests/test/index.html
 
 ---
 
-## Troubleshooting
-
-### `SessionNotCreatedException` — driver UiAutomator2 tidak ditemukan
-
-```bash
-appium driver install uiautomator2
-# Restart Appium server setelah install
-```
-
-### `Neither ANDROID_HOME nor ANDROID_SDK_ROOT`
-
-```bash
-export ANDROID_HOME=$HOME/Android/Sdk
-export ANDROID_SDK_ROOT=$ANDROID_HOME
-# Jalankan ulang Appium server dengan env di atas
-```
-
-### Emulator tidak terdeteksi
-
-```bash
-adb devices
-# Pastikan muncul: emulator-5554    device
-```
-
-### Appium server tidak merespons
-
-```bash
-curl http://127.0.0.1:4723/status
-# Harus return: "ready": true
-```
-
----
-
 ## Lisensi
 
 Proyek ini dibuat untuk keperluan pembelajaran dan automation testing.
