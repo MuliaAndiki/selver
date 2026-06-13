@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
 
             Snackbar.make(binding.root, errorMessage, Snackbar.LENGTH_SHORT).apply {
                 view.id = R.id.snackbar_error
+                view.contentDescription = errorMessage
                 show()
             }
             viewModel.clearValidationError()
