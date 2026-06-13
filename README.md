@@ -31,15 +31,15 @@ Aplikasi Android sederhana untuk simulasi kasir kedai kopi. Dibangun dengan **Ko
 
 ## Tech Stack
 
-| Kategori | Teknologi |
-|----------|-----------|
-| Bahasa | Kotlin |
-| UI | XML Views (bukan Jetpack Compose) |
-| Design | Material Design 3 |
-| Binding | ViewBinding |
-| Arsitektur | MVVM-lite (`ViewModel` + `LiveData`) |
-| Min SDK | 24 |
-| Target SDK | 36 |
+| Kategori   | Teknologi                                         |
+| ---------- | ------------------------------------------------- |
+| Bahasa     | Kotlin                                            |
+| UI         | XML Views (bukan Jetpack Compose)                 |
+| Design     | Material Design 3                                 |
+| Binding    | ViewBinding                                       |
+| Arsitektur | MVVM-lite (`ViewModel` + `LiveData`)              |
+| Min SDK    | 24                                                |
+| Target SDK | 36                                                |
 | Automation | Appium 2.x + UiAutomator2 + JUnit 5 + Java Client |
 
 ---
@@ -60,6 +60,7 @@ Aplikasi Android sederhana untuk simulasi kasir kedai kopi. Dibangun dengan **Ko
 ```
 
 **Alur data:**
+
 1. User mengisi form dan menekan **HITUNG TOTAL**
 2. `MainActivity` mengirim data ke `PosViewModel.calculateTotal()`
 3. ViewModel memvalidasi, menghitung, lalu mengirim hasil via `LiveData`
@@ -129,16 +130,16 @@ TOTAL BAYAR: Rp [Total Bayar]
 
 Semua elemen UI memiliki ID tetap untuk automation testing:
 
-| Elemen | Resource ID |
-|--------|-------------|
-| Toolbar header | `com.example.svelter:id/toolbar_header` |
+| Elemen             | Resource ID                              |
+| ------------------ | ---------------------------------------- |
+| Toolbar header     | `com.example.svelter:id/toolbar_header`  |
 | Input nama pesanan | `com.example.svelter:id/et_nama_pesanan` |
-| Input harga | `com.example.svelter:id/et_harga` |
-| Input jumlah | `com.example.svelter:id/et_jumlah` |
-| Checkbox takeaway | `com.example.svelter:id/cb_takeaway` |
-| Tombol hitung | `com.example.svelter:id/btn_hitung` |
-| Hasil struk | `com.example.svelter:id/tv_hasil_struk` |
-| Snackbar error | `com.example.svelter:id/snackbar_error` |
+| Input harga        | `com.example.svelter:id/et_harga`        |
+| Input jumlah       | `com.example.svelter:id/et_jumlah`       |
+| Checkbox takeaway  | `com.example.svelter:id/cb_takeaway`     |
+| Tombol hitung      | `com.example.svelter:id/btn_hitung`      |
+| Hasil struk        | `com.example.svelter:id/tv_hasil_struk`  |
+| Snackbar error     | `com.example.svelter:id/snackbar_error`  |
 
 ---
 
@@ -171,13 +172,13 @@ Modul test berada di `app/appium-test/` dan dijalankan terpisah dari instrumente
 
 ### Prasyarat
 
-| Tool | Instalasi |
-|------|-----------|
-| Node.js | [nodejs.org](https://nodejs.org) |
-| Appium 2.x | `npm install -g appium` |
+| Tool                | Instalasi                            |
+| ------------------- | ------------------------------------ |
+| Node.js             | [nodejs.org](https://nodejs.org)     |
+| Appium 2.x          | `npm install -g appium`              |
 | Driver UiAutomator2 | `appium driver install uiautomator2` |
-| Java 11+ | Sudah termasuk di Android Studio |
-| ADB | Bagian dari Android SDK |
+| Java 11+            | Sudah termasuk di Android Studio     |
+| ADB                 | Bagian dari Android SDK              |
 
 ### Setup Environment
 
@@ -225,31 +226,31 @@ app/appium-test/build/reports/tests/test/index.html
 
 ## Daftar Test Case (TC01–TC14)
 
-| TC | Nama Test | Skenario | Input | Ekspektasi |
-|----|-----------|----------|-------|------------|
-| **TC01** | Layar utama menampilkan teks struk default | Buka aplikasi | — | `tv_hasil_struk` = `"Belum ada transaksi"` |
-| **TC02** | Toolbar header tampil | Buka aplikasi | — | `toolbar_header` terlihat |
-| **TC03** | Semua elemen form tampil | Buka aplikasi | — | Semua field, checkbox, tombol, dan struk terlihat |
-| **TC04** | Hitung total tanpa takeaway | Isi form + tap hitung | Nama: Kopi Latte, Harga: 25000, Jumlah: 2, Takeaway: off | Subtotal Rp 50.000, Biaya Takeaway Rp 0, Total Rp 50.000 |
-| **TC05** | Hitung total dengan takeaway | Isi form + centang takeaway | Nama: Kopi Latte, Harga: 25000, Jumlah: 2, Takeaway: on | Subtotal Rp 50.000, Biaya Takeaway Rp 3.000, Total Rp 53.000 |
-| **TC06** | Checkbox takeaway toggle | Centang & lepas checkbox | — | Checkbox bisa on/off |
-| **TC07** | Validasi semua field kosong | Tap hitung tanpa isi form | Semua kosong | Snackbar: `"Harap isi semua data pesanan!"`, struk tetap default |
-| **TC08** | Validasi nama kosong | Tap hitung | Nama: kosong, Harga: 25000, Jumlah: 2 | Snackbar error validasi |
-| **TC09** | Validasi harga kosong | Tap hitung | Nama: Kopi Latte, Harga: kosong, Jumlah: 2 | Snackbar error validasi |
-| **TC10** | Validasi jumlah kosong | Tap hitung | Nama: Kopi Latte, Harga: 25000, Jumlah: kosong | Snackbar error validasi |
-| **TC11** | Validasi harga bukan angka | Tap hitung | Nama: Kopi Latte, Harga: abc, Jumlah: 2 | Snackbar error validasi |
-| **TC12** | Validasi jumlah bukan angka | Tap hitung | Nama: Kopi Latte, Harga: 25000, Jumlah: xyz | Snackbar error validasi |
-| **TC13** | Perhitungan nilai berbeda | Isi form + tap hitung | Nama: Es Teh Manis, Harga: 8000, Jumlah: 3 | Subtotal Rp 24.000, Total Rp 24.000 |
-| **TC14** | Format struk lengkap | Isi form + takeaway | Nama: Cappuccino, Harga: 30000, Jumlah: 1, Takeaway: on | Struk berisi header, subtotal, biaya takeaway, dan total Rp 33.000 |
+| TC       | Nama Test                                  | Skenario                    | Input                                                    | Ekspektasi                                                         |
+| -------- | ------------------------------------------ | --------------------------- | -------------------------------------------------------- | ------------------------------------------------------------------ |
+| **TC01** | Layar utama menampilkan teks struk default | Buka aplikasi               | —                                                        | `tv_hasil_struk` = `"Belum ada transaksi"`                         |
+| **TC02** | Toolbar header tampil                      | Buka aplikasi               | —                                                        | `toolbar_header` terlihat                                          |
+| **TC03** | Semua elemen form tampil                   | Buka aplikasi               | —                                                        | Semua field, checkbox, tombol, dan struk terlihat                  |
+| **TC04** | Hitung total tanpa takeaway                | Isi form + tap hitung       | Nama: Kopi Latte, Harga: 25000, Jumlah: 2, Takeaway: off | Subtotal Rp 50.000, Biaya Takeaway Rp 0, Total Rp 50.000           |
+| **TC05** | Hitung total dengan takeaway               | Isi form + centang takeaway | Nama: Kopi Latte, Harga: 25000, Jumlah: 2, Takeaway: on  | Subtotal Rp 50.000, Biaya Takeaway Rp 3.000, Total Rp 53.000       |
+| **TC06** | Checkbox takeaway toggle                   | Centang & lepas checkbox    | —                                                        | Checkbox bisa on/off                                               |
+| **TC07** | Validasi semua field kosong                | Tap hitung tanpa isi form   | Semua kosong                                             | Snackbar: `"Harap isi semua data pesanan!"`, struk tetap default   |
+| **TC08** | Validasi nama kosong                       | Tap hitung                  | Nama: kosong, Harga: 25000, Jumlah: 2                    | Snackbar error validasi                                            |
+| **TC09** | Validasi harga kosong                      | Tap hitung                  | Nama: Kopi Latte, Harga: kosong, Jumlah: 2               | Snackbar error validasi                                            |
+| **TC10** | Validasi jumlah kosong                     | Tap hitung                  | Nama: Kopi Latte, Harga: 25000, Jumlah: kosong           | Snackbar error validasi                                            |
+| **TC11** | Validasi harga bukan angka                 | Tap hitung                  | Nama: Kopi Latte, Harga: abc, Jumlah: 2                  | Snackbar error validasi                                            |
+| **TC12** | Validasi jumlah bukan angka                | Tap hitung                  | Nama: Kopi Latte, Harga: 25000, Jumlah: xyz              | Snackbar error validasi                                            |
+| **TC13** | Perhitungan nilai berbeda                  | Isi form + tap hitung       | Nama: Es Teh Manis, Harga: 8000, Jumlah: 3               | Subtotal Rp 24.000, Total Rp 24.000                                |
+| **TC14** | Format struk lengkap                       | Isi form + takeaway         | Nama: Cappuccino, Harga: 30000, Jumlah: 1, Takeaway: on  | Struk berisi header, subtotal, biaya takeaway, dan total Rp 33.000 |
 
 ### Kategori Test
 
-| Kategori | Test Case |
-|----------|-----------|
-| UI / Smoke | TC01, TC02, TC03 |
-| Perhitungan sukses | TC04, TC05, TC13, TC14 |
-| Interaksi UI | TC06 |
-| Validasi error | TC07, TC08, TC09, TC10, TC11, TC12 |
+| Kategori           | Test Case                          |
+| ------------------ | ---------------------------------- |
+| UI / Smoke         | TC01, TC02, TC03                   |
+| Perhitungan sukses | TC04, TC05, TC13, TC14             |
+| Interaksi UI       | TC06                               |
+| Validasi error     | TC07, TC08, TC09, TC10, TC11, TC12 |
 
 ---
 
@@ -283,10 +284,6 @@ adb devices
 curl http://127.0.0.1:4723/status
 # Harus return: "ready": true
 ```
-
-### Test gagal karena keyboard menutupi elemen
-
-Sudah ditangani otomatis di `BasePosAppiumTest` (`hideKeyboardIfVisible()` + auto-scroll). Pastikan layout `activity_main.xml` menggunakan `ScrollView`.
 
 ---
 
